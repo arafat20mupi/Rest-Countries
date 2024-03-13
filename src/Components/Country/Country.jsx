@@ -1,12 +1,15 @@
 import { useState } from "react";
 
-const Country = ({country}) => {
-    console.log(country);
+const Country = ({country, handleVisitedCountry}) => {
+    // console.log(country);
     const {name ,flags , population, area} = country;
     const [visited , setVisited] = useState(false);
     const handleVisited = () =>{
         setVisited(!visited);
     }
+
+    
+
     return (
         <div>
             
@@ -15,6 +18,9 @@ const Country = ({country}) => {
                 <img className="text-center h-52 w-full p-5" src={flags.png} alt="" />
                 <p className="text-xl  ml-2">Population: {population}</p>
                 <p className="text-xl  ml-2">Area: {area}</p>
+
+                <button onClick={() =>handleVisitedCountry(country)} className="p-2 mr-3 rounded-lg bg-gray-200">Visited done</button>
+                <br />
                 <button onClick={handleVisited} className="p-2 mr-3 rounded-lg bg-gray-200">{visited? "Visited" : "Going"}</button>
                 {visited? 'visited this country':''}
             </div>
